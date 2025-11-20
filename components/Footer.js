@@ -19,7 +19,9 @@ export default function Footer({ t }) {
     <footer style={{
       background: 'var(--color-primary)',
       color: '#ffffff',
-      padding: 'var(--space-12) 0 var(--space-6)'
+      padding: 'var(--space-12) 0 var(--space-6)',
+      position: 'relative',
+      zIndex: 10
     }} role="contentinfo">
       <div className="max-w-7xl">
         <div style={{

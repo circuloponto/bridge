@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ParallaxBackground from '@/components/ParallaxBackground';
 import { getTranslation } from '@/lib/i18n';
 import { Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
@@ -14,6 +15,7 @@ export default function ObjetivosPage() {
 
   return (
     <>
+      <ParallaxBackground />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
       
       <main style={{ paddingTop: '80px' }}>

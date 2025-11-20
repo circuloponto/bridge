@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ParallaxBackground from '@/components/ParallaxBackground';
 import { getTranslation } from '@/lib/i18n';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -12,6 +13,7 @@ export default function ContactosPage() {
 
   return (
     <>
+      <ParallaxBackground />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
       
       <main style={{ paddingTop: '80px' }}>

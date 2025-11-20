@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CursorFollower from '@/components/CursorFollower';
+import ParallaxBackground from '@/components/ParallaxBackground';
 import { getTranslation } from '@/lib/i18n';
 import { ArrowRight, Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
@@ -13,6 +14,7 @@ export default function Home() {
 
   return (
     <>
+      <ParallaxBackground />
       <CursorFollower />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
 

@@ -300,6 +300,8 @@ button, .btn {
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
   transition: var(--transition-base);
+  position: relative;
+  z-index: 2;
 }
 
 .card:hover {

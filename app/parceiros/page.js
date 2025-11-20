@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ParallaxBackground from '@/components/ParallaxBackground';
 import { getTranslation } from '@/lib/i18n';
 
 export default function ParceirosPage() {
@@ -11,6 +12,7 @@ export default function ParceirosPage() {
 
   return (
     <>
+      <ParallaxBackground />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
       <main style={{ paddingTop: '80px' }}>
         <section style={{ padding: 'var(--space-20) 0' }}>
