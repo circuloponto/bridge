@@ -4,10 +4,13 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { getTranslation } from '@/lib/i18n';
+import { Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
 export default function ObjetivosPage() {
   const [language, setLanguage] = useState('pt');
   const t = getTranslation(language);
+
+  const icons = [Scale, DollarSign, Truck, BookOpen];
 
   return (
     <>
@@ -51,27 +54,27 @@ export default function ObjetivosPage() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
               gap: 'var(--space-8)'
             }}>
-              {t.objectives.items.map((item, index) => (
-                <div key={index} className="card">
-                  <div style={{
-                    width: '56px',
-                    height: '56px',
-                    background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
-                    borderRadius: 'var(--radius-xl)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 'var(--text-2xl)',
-                    fontWeight: '700',
-                    color: '#ffffff',
-                    marginBottom: 'var(--space-5)'
-                  }}>
-                    {index + 1}
+              {t.objectives.items.map((item, index) => {
+                const Icon = icons[index];
+                return (
+                  <div key={index} className="card">
+                    <div style={{
+                      width: '56px',
+                      height: '56px',
+                      background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
+                      borderRadius: 'var(--radius-xl)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 'var(--space-5)'
+                    }}>
+                      <Icon size={28} color="#ffffff" strokeWidth={2} />
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
                   </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

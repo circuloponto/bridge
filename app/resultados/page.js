@@ -22,11 +22,33 @@ export default function ResultadosPage() {
             </div>
             <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
               {t.results.stats.map((stat, index) => (
-                <div key={index} className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 'var(--text-6xl)', fontWeight: '700', color: 'var(--color-primary)', marginBottom: 'var(--space-2)' }}>
+                <div key={index} className="card" style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  textAlign: 'center'
+                }}>
+                  <div style={{ 
+                    fontSize: 'var(--text-6xl)', 
+                    fontWeight: '700', 
+                    color: 'var(--color-primary)', 
+                    marginBottom: 'var(--space-2)',
+                    lineHeight: '1',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
                     {stat.value}
                   </div>
-                  <p style={{ fontSize: 'var(--text-lg)', fontWeight: '600' }}>{stat.label}</p>
+                  <p style={{ 
+                    fontSize: 'var(--text-lg)', 
+                    fontWeight: '600', 
+                    margin: 0,
+                    padding: 0,
+                    textAlign: 'center',
+                    width: '100%'
+                  }}>{stat.label}</p>
                 </div>
               ))}
             </div>

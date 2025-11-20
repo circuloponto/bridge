@@ -93,6 +93,7 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
   ];
 
   return (
+    <>
     <nav
       style={{
         position: 'fixed',
@@ -273,6 +274,7 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
           ))}
         </div>
       </div>
+    </nav>
 
       {/* Mobile Menu */}
       {isOpen && (
@@ -287,7 +289,7 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
           WebkitBackdropFilter: 'blur(10px)',
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
           padding: 'var(--space-4) 0',
-          zIndex: 999,
+          zIndex: 1001,
           overflowY: 'auto'
         }}>
           <div className="max-w-7xl">
@@ -322,6 +324,6 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
