@@ -102,7 +102,7 @@ export default function Footer({ t }) {
                         e.currentTarget.style.transform = 'translateX(0)';
                       }}
                     >
-                      <ChevronRight size={14} />
+                      <ChevronRight size={14} style={{ color: '#e8a05d' }} />
                       {link.label}
                     </Link>
                   </li>
@@ -140,7 +140,7 @@ export default function Footer({ t }) {
                         e.currentTarget.style.transform = 'translateX(0)';
                       }}
                     >
-                      <ChevronRight size={14} />
+                      <ChevronRight size={14} style={{ color: '#e8a05d' }} />
                       {link.label}
                     </Link>
                   </li>
