@@ -308,13 +308,16 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
                     color: isActive ? 'var(--color-primary)' : 'var(--color-text)',
                     textDecoration: 'none',
                     borderLeft: isActive ? '3px solid var(--color-primary)' : '3px solid transparent',
-                    transition: 'all 0.2s'
+                    transition: 'all 0.3s ease',
+                    transform: 'translateX(0)'
                   }}
                   onMouseEnter={(e) => {
-                    e.target.style.background = 'var(--color-cream)';
+                    e.currentTarget.style.background = 'var(--color-cream)';
+                    e.currentTarget.style.transform = 'translateX(8px)';
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.background = 'transparent';
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.transform = 'translateX(0)';
                   }}
                 >
                   {item.label}

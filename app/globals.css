@@ -25,6 +25,30 @@ body {
   color: #1a1a1a;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e8a05d;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97757;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e8a05d #f1f1f1;
+}
+
 :root {
   /* Premium Color System */
   --color-primary: #7d4e5c;
@@ -327,14 +351,25 @@ button, .btn {
 }
 
 .section-badge {
-  display: inline-block;
-  padding: var(--space-2) var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
   background: var(--color-cream);
-  border-radius: var(--radius-xl);
-  font-size: var(--text-sm);
+  border-radius: 100px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: var(--space-4);
+}
+
+.section-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 /* Navigation Active Indicator Animation */

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import CursorFollower from '@/components/CursorFollower';
 import { getTranslation } from '@/lib/i18n';
 import { ArrowRight, Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
@@ -12,6 +13,7 @@ export default function Home() {
 
   return (
     <>
+      <CursorFollower />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
 
       <main id="main-content">
