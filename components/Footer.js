@@ -212,7 +212,7 @@ export default function Footer({ t }) {
               © {new Date().getFullYear()} BRIDGE. {t.footer.rights}
             </p>
             <div style={{ display: 'flex', gap: 'var(--space-6)', fontSize: 'var(--text-sm)' }}>
-              <a href="#" style={{
+              <Link href="/privacidade" style={{
                 color: 'rgba(255, 255, 255, 0.5)',
                 textDecoration: 'none',
                 transition: 'color 0.2s'
@@ -220,8 +220,8 @@ export default function Footer({ t }) {
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.5)'}>
                 {t.footer.privacy}
-              </a>
-              <a href="#" style={{
+              </Link>
+              <Link href="/acessibilidade" style={{
                 color: 'rgba(255, 255, 255, 0.5)',
                 textDecoration: 'none',
                 transition: 'color 0.2s'
@@ -229,7 +229,7 @@ export default function Footer({ t }) {
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.5)'}>
                 {t.footer.terms}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useLanguage } from '@/hooks/useLanguage';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CursorFollower from '@/components/CursorFollower';
@@ -9,7 +9,7 @@ import { getTranslation } from '@/lib/i18n';
 import { ArrowRight, Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
 export default function Home() {
-  const [language, setLanguage] = useState('pt');
+  const [language, setLanguage] = useLanguage();
   const t = getTranslation(language);
 
   return (

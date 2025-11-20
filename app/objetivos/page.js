@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ParallaxBackground from '@/components/ParallaxBackground';
 import { getTranslation } from '@/lib/i18n';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
 export default function ObjetivosPage() {
-  const [language, setLanguage] = useState('pt');
+  const [language, setLanguage] = useLanguage();
   const t = getTranslation(language);
 
   const icons = [Scale, DollarSign, Truck, BookOpen];

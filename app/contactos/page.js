@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ParallaxBackground from '@/components/ParallaxBackground';
 import { getTranslation } from '@/lib/i18n';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function ContactosPage() {
-  const [language, setLanguage] = useState('pt');
+  const [language, setLanguage] = useLanguage();
   const t = getTranslation(language);
 
   return (
