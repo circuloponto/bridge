@@ -146,7 +146,7 @@ export default function Home() {
                 marginBottom: 'var(--space-6)',
                 color: 'var(--color-text)'
               }}>
-                What We Do
+                {t.overview.title}
               </h2>
               <p style={{
                 fontSize: 'var(--text-xl)',
@@ -155,7 +155,7 @@ export default function Home() {
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                BRIDGE provides comprehensive legal, financial, and logistical support to home caregivers, helping them provide better care for their loved ones.
+                {t.overview.description}
               </p>
             </div>
             
@@ -163,46 +163,27 @@ export default function Home() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: 'var(--space-8)'
             }}>
-              <div className="card">
-                <div style={{ marginBottom: 'var(--space-4)' }}>
-                  <Scale size={32} color="var(--color-primary)" strokeWidth={1.5} />
-                </div>
-                <h3 style={{ marginBottom: 'var(--space-3)' }}>Legal Support</h3>
-                <p>Guidance on caregiver rights, contracts, insurance, and legal matters</p>
-                <a href="/objetivos" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
-                  Learn more <ArrowRight size={16} />
-                </a>
-              </div>
-              <div className="card">
-                <div style={{ marginBottom: 'var(--space-4)' }}>
-                  <DollarSign size={32} color="var(--color-primary)" strokeWidth={1.5} />
-                </div>
-                <h3 style={{ marginBottom: 'var(--space-3)' }}>Financial Aid</h3>
-                <p>Information on subsidies, government support, and budget management</p>
-                <a href="/grupos-alvo" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
-                  Learn more <ArrowRight size={16} />
-                </a>
-              </div>
-              <div className="card">
-                <div style={{ marginBottom: 'var(--space-4)' }}>
-                  <Truck size={32} color="var(--color-primary)" strokeWidth={1.5} />
-                </div>
-                <h3 style={{ marginBottom: 'var(--space-3)' }}>Logistics Help</h3>
-                <p>Resources for care organization, medical equipment, and support services</p>
-                <a href="/atividades" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
-                  Learn more <ArrowRight size={16} />
-                </a>
-              </div>
-              <div className="card">
-                <div style={{ marginBottom: 'var(--space-4)' }}>
-                  <BookOpen size={32} color="var(--color-primary)" strokeWidth={1.5} />
-                </div>
-                <h3 style={{ marginBottom: 'var(--space-3)' }}>Training</h3>
-                <p>Workshops on care techniques, stress management, and caregiver wellbeing</p>
-                <a href="/resultados" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
-                  Learn more <ArrowRight size={16} />
-                </a>
-              </div>
+              {[
+                { icon: Scale, href: '/objetivos' },
+                { icon: DollarSign, href: '/grupos-alvo' },
+                { icon: Truck, href: '/atividades' },
+                { icon: BookOpen, href: '/resultados' }
+              ].map((item, index) => {
+                const Icon = item.icon;
+                const service = t.overview.services[index];
+                return (
+                  <div key={index} className="card">
+                    <div style={{ marginBottom: 'var(--space-4)' }}>
+                      <Icon size={32} color="var(--color-primary)" strokeWidth={1.5} />
+                    </div>
+                    <h3 style={{ marginBottom: 'var(--space-3)' }}>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <a href={item.href} style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
+                      {service.link} <ArrowRight size={16} />
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

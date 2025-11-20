@@ -23,20 +23,28 @@ export default function NoticiasPage() {
               <p>{t.news.description}</p>
             </div>
             <div className="grid">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="card">
+              {t.news.items.map((item, index) => (
+                <div key={index} className="card">
                   <div style={{ 
                     height: '200px', 
                     background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
                     borderRadius: 'var(--radius-xl)',
-                    marginBottom: 'var(--space-4)'
-                  }}></div>
+                    marginBottom: 'var(--space-4)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                    fontSize: 'var(--text-2xl)',
+                    fontWeight: '600'
+                  }}>
+                    {item.category}
+                  </div>
                   <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-tertiary)', marginBottom: 'var(--space-2)' }}>
-                    {new Date().toLocaleDateString(language === 'pt' ? 'pt-PT' : language === 'gb' ? 'en-GB' : 'fr-FR')}
+                    {item.date}
                   </p>
-                  <h3>News Title {i}</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-                  <a href="#" style={{ color: 'var(--color-primary)', fontWeight: '600' }}>{t.news.readMore} →</a>
+                  <h3 style={{ marginBottom: 'var(--space-3)' }}>{item.title}</h3>
+                  <p style={{ marginBottom: 'var(--space-4)' }}>{item.excerpt}</p>
+                  <a href="#" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none' }}>{t.news.readMore} →</a>
                 </div>
               ))}
             </div>
