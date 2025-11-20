@@ -1,65 +1,210 @@
-import Image from "next/image";
+﻿'use client';
+
+import { useState } from 'react';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { getTranslation } from '@/lib/i18n';
+import { ArrowRight, Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
 
 export default function Home() {
+  const [language, setLanguage] = useState('pt');
+  const t = getTranslation(language);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
+
+      <main id="main-content">
+        {/* Hero Section - World-Class Design */}
+        <section id="inicio" style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          background: '#ffffff',
+          position: 'relative'
+        }}>
+          <div className="max-w-7xl">
+            <div style={{
+              maxWidth: '900px',
+              margin: '0 auto',
+              textAlign: 'center'
+            }}>
+              {/* Badge */}
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '12px 24px',
+                background: 'var(--color-cream)',
+                borderRadius: '100px',
+                marginBottom: '48px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: 'var(--color-primary)'
+              }}>
+                <div style={{
+                  width: '8px',
+                  height: '8px',
+                  background: 'var(--color-secondary)',
+                  borderRadius: '50%'
+                }}></div>
+                Caregiver Support Project
+              </div>
+              
+              {/* Hero Title - MASSIVE & BOLD */}
+              <h1 style={{
+                fontSize: 'clamp(48px, 8vw, 96px)',
+                fontWeight: '700',
+                lineHeight: '1.1',
+                letterSpacing: '-0.03em',
+                color: 'var(--color-text)',
+                marginBottom: '32px',
+                textWrap: 'balance'
+              }}>
+                {t.hero.title}
+              </h1>
+              
+              {/* Description - Large & Readable */}
+              <p style={{
+                fontSize: 'clamp(18px, 2vw, 24px)',
+                lineHeight: '1.7',
+                color: 'var(--color-text-secondary)',
+                marginBottom: '64px',
+                maxWidth: '700px',
+                margin: '0 auto 64px'
+              }}>
+                {t.hero.description}
+              </p>
+              
+              {/* CTAs - Prominent & Clear */}
+              <div style={{
+                display: 'flex',
+                gap: '16px',
+                justifyContent: 'center',
+                flexWrap: 'wrap'
+              }}>
+                <a
+                  href="/objetivos"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: 'clamp(14px, 3vw, 20px) clamp(24px, 5vw, 40px)',
+                    fontSize: 'clamp(16px, 2vw, 18px)',
+                    fontWeight: '600',
+                    color: '#ffffff',
+                    background: 'var(--color-primary)',
+                    borderRadius: '16px',
+                    textDecoration: 'none',
+                    transition: 'all 0.25s',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {t.hero.cta}
+                  <ArrowRight size={20} />
+                </a>
+                <a
+                  href="/contactos"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: 'clamp(14px, 3vw, 20px) clamp(24px, 5vw, 40px)',
+                    fontSize: 'clamp(16px, 2vw, 18px)',
+                    fontWeight: '600',
+                    color: 'var(--color-primary)',
+                    background: '#ffffff',
+                    border: '2px solid var(--color-border)',
+                    borderRadius: '16px',
+                    textDecoration: 'none',
+                    transition: 'all 0.25s',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {t.hero.ctaSecondary}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Overview Section */}
+        <section style={{
+          padding: 'var(--space-20) 0',
+          background: 'var(--color-cream)'
+        }}>
+          <div className="max-w-7xl">
+            <div style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }}>
+              <h2 style={{
+                fontSize: 'clamp(36px, 5vw, 56px)',
+                fontWeight: '700',
+                lineHeight: '1.2',
+                marginBottom: 'var(--space-6)',
+                color: 'var(--color-text)'
+              }}>
+                What We Do
+              </h2>
+              <p style={{
+                fontSize: 'var(--text-xl)',
+                lineHeight: '1.8',
+                color: 'var(--color-text-secondary)',
+                maxWidth: '700px',
+                margin: '0 auto'
+              }}>
+                BRIDGE provides comprehensive legal, financial, and logistical support to home caregivers, helping them provide better care for their loved ones.
+              </p>
+            </div>
+            
+            <div className="grid" style={{
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'var(--space-8)'
+            }}>
+              <div className="card">
+                <div style={{ marginBottom: 'var(--space-4)' }}>
+                  <Scale size={32} color="var(--color-primary)" strokeWidth={1.5} />
+                </div>
+                <h3 style={{ marginBottom: 'var(--space-3)' }}>Legal Support</h3>
+                <p>Guidance on caregiver rights, contracts, insurance, and legal matters</p>
+                <a href="/objetivos" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
+                  Learn more <ArrowRight size={16} />
+                </a>
+              </div>
+              <div className="card">
+                <div style={{ marginBottom: 'var(--space-4)' }}>
+                  <DollarSign size={32} color="var(--color-primary)" strokeWidth={1.5} />
+                </div>
+                <h3 style={{ marginBottom: 'var(--space-3)' }}>Financial Aid</h3>
+                <p>Information on subsidies, government support, and budget management</p>
+                <a href="/grupos-alvo" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
+                  Learn more <ArrowRight size={16} />
+                </a>
+              </div>
+              <div className="card">
+                <div style={{ marginBottom: 'var(--space-4)' }}>
+                  <Truck size={32} color="var(--color-primary)" strokeWidth={1.5} />
+                </div>
+                <h3 style={{ marginBottom: 'var(--space-3)' }}>Logistics Help</h3>
+                <p>Resources for care organization, medical equipment, and support services</p>
+                <a href="/atividades" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
+                  Learn more <ArrowRight size={16} />
+                </a>
+              </div>
+              <div className="card">
+                <div style={{ marginBottom: 'var(--space-4)' }}>
+                  <BookOpen size={32} color="var(--color-primary)" strokeWidth={1.5} />
+                </div>
+                <h3 style={{ marginBottom: 'var(--space-3)' }}>Training</h3>
+                <p>Workshops on care techniques, stress management, and caregiver wellbeing</p>
+                <a href="/resultados" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: 'var(--space-3)' }}>
+                  Learn more <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+
+      <Footer t={t} />
+    </>
   );
 }
