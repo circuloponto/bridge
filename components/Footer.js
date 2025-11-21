@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Footer({ t }) {
   const quickLinks = [
@@ -24,14 +25,15 @@ export default function Footer({ t }) {
       zIndex: 10
     }} role="contentinfo">
       <div className="max-w-7xl">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: 'var(--space-8)',
-          marginBottom: 'var(--space-8)'
-        }}>
-          {/* Brand */}
-          <div>
+        <ScrollReveal direction="down">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: 'var(--space-8)',
+            marginBottom: 'var(--space-8)'
+          }}>
+            {/* Brand */}
+            <div>
             <Link href="/" style={{
               display: 'flex',
               alignItems: 'center',
@@ -190,21 +192,23 @@ export default function Footer({ t }) {
               </li>
             </ul>
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
         {/* Bottom Bar */}
-        <div style={{
-          marginTop: 'var(--space-8)',
-          paddingTop: 'var(--space-6)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
+        <ScrollReveal direction="down" delay={0.2}>
           <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: 'var(--space-4)'
+            marginTop: 'var(--space-8)',
+            paddingTop: 'var(--space-6)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)'
           }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: 'var(--space-4)'
+            }}>
             <p style={{
               fontSize: 'var(--text-sm)',
               color: 'rgba(255, 255, 255, 0.5)'
@@ -231,8 +235,9 @@ export default function Footer({ t }) {
                 {t.footer.terms}
               </Link>
             </div>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </footer>
   );

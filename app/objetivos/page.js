@@ -3,6 +3,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ParallaxBackground from '@/components/ParallaxBackground';
+import ScrollReveal from '@/components/ScrollReveal';
 import { getTranslation } from '@/lib/i18n';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Scale, DollarSign, Truck, BookOpen } from 'lucide-react';
@@ -24,33 +25,35 @@ export default function ObjetivosPage() {
           background: '#ffffff'
         }}>
           <div className="max-w-7xl">
-            <div style={{
-              maxWidth: '800px',
-              margin: '0 auto',
-              textAlign: 'center',
-              marginBottom: 'var(--space-16)'
-            }}>
-              <div className="section-badge">
-                {t.objectives.subtitle}
+            <ScrollReveal>
+              <div style={{
+                maxWidth: '800px',
+                margin: '0 auto',
+                textAlign: 'center',
+                marginBottom: 'var(--space-16)'
+              }}>
+                <div className="section-badge">
+                  {t.objectives.subtitle}
+                </div>
+                <h1 style={{
+                  fontSize: 'clamp(48px, 6vw, 72px)',
+                  fontWeight: '700',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em',
+                  marginBottom: 'var(--space-6)',
+                  color: 'var(--color-text)'
+                }}>
+                  {t.objectives.title}
+                </h1>
+                <p style={{
+                  fontSize: 'var(--text-xl)',
+                  lineHeight: '1.8',
+                  color: 'var(--color-text-secondary)'
+                }}>
+                  {t.objectives.description}
+                </p>
               </div>
-              <h1 style={{
-                fontSize: 'clamp(48px, 6vw, 72px)',
-                fontWeight: '700',
-                lineHeight: '1.2',
-                letterSpacing: '-0.02em',
-                marginBottom: 'var(--space-6)',
-                color: 'var(--color-text)'
-              }}>
-                {t.objectives.title}
-              </h1>
-              <p style={{
-                fontSize: 'var(--text-xl)',
-                lineHeight: '1.8',
-                color: 'var(--color-text-secondary)'
-              }}>
-                {t.objectives.description}
-              </p>
-            </div>
+            </ScrollReveal>
 
             <div className="grid" style={{
               gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
@@ -59,7 +62,8 @@ export default function ObjetivosPage() {
               {t.objectives.items.map((item, index) => {
                 const Icon = icons[index];
                 return (
-                  <div key={index} className="card">
+                  <ScrollReveal key={index} delay={index * 0.1}>
+                    <div className="card">
                     <div style={{
                       width: '56px',
                       height: '56px',
@@ -74,7 +78,8 @@ export default function ObjetivosPage() {
                     </div>
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
-                  </div>
+                    </div>
+                  </ScrollReveal>
                 );
               })}
             </div>

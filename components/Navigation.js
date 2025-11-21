@@ -292,8 +292,20 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
           zIndex: 1001,
           overflowY: 'auto'
         }}>
+          <style jsx>{`
+            @keyframes slideInFromLeft {
+              from {
+                opacity: 0;
+                transform: translateX(-30px);
+              }
+              to {
+                opacity: 1;
+                transform: translateX(0);
+              }
+            }
+          `}</style>
           <div className="max-w-7xl">
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const isActive = pathname === item.href;
               return (
                 <Link
@@ -309,7 +321,8 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
                     textDecoration: 'none',
                     borderLeft: isActive ? '3px solid var(--color-primary)' : '3px solid transparent',
                     transition: 'all 0.3s ease',
-                    transform: 'translateX(0)'
+                    transform: 'translateX(0)',
+                    animation: `slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s both`
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = 'var(--color-cream)';
