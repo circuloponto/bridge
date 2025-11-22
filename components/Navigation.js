@@ -3,15 +3,24 @@
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { Sun, Moon } from 'lucide-react';
 
 export default function Navigation({ t, currentLang, onLanguageChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const navRef = useRef(null);
   const linkRefs = useRef({});
   const previousPath = useRef(pathname);
+
+  // Avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,12 +110,12 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: scrolled ? 'rgba(255, 255, 255, 0.48)' : 'rgba(255, 255, 255, 0)',
+          background: scrolled ? 'var(--color-bg-subtle)' : 'transparent',
           boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
           backdropFilter: scrolled ? 'blur(39.9px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(9.9px)' : 'none',
           border: 'none',
-          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid var(--color-border-light)' : '1px solid transparent',
           transition: 'all 0.3s ease'
         }}
         role="navigation"
@@ -280,30 +289,60 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
             </svg>
           </button>
 
-          {/* Language Switcher */}
-          <div className="lang-switcher" style={{
+          {/* Language Switcher & Theme Toggle */}
+          <div style={{
             display: 'flex',
-            gap: '4px',
-            background: 'var(--color-cream)',
-            padding: '6px',
-            borderRadius: '12px',
-            border: '1px solid var(--color-border-light)'
+            alignItems: 'center',
+            gap: '12px'
           }}>
-            {languages.map((lang) => (
+            {/* Theme Toggle */}
+            {mounted && (
               <button
-                key={lang.code}
-                onClick={() => onLanguageChange(lang.code)}
-                className="lang-btn"
+                onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
                 style={{
-                  background: currentLang === lang.code ? 'var(--color-primary)' : 'transparent',
-                  color: currentLang === lang.code ? '#ffffff' : 'var(--color-text-secondary)'
+                  padding: '8px',
+                  borderRadius: '50%',
+                  background: 'var(--color-cream)',
+                  color: 'var(--color-primary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid var(--color-border-light)',
+                  cursor: 'pointer',
+                  width: '40px',
+                  height: '40px',
+                  transition: 'all 0.2s'
                 }}
-                aria-label={`Switch to ${lang.label}`}
-                aria-pressed={currentLang === lang.code}
+                aria-label="Toggle theme"
               >
-                {lang.label}
+                {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-            ))}
+            )}
+
+            <div className="lang-switcher" style={{
+              display: 'flex',
+              gap: '4px',
+              background: 'var(--color-cream)',
+              padding: '6px',
+              borderRadius: '12px',
+              border: '1px solid var(--color-border-light)'
+            }}>
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => onLanguageChange(lang.code)}
+                  className="lang-btn"
+                  style={{
+                    background: currentLang === lang.code ? 'var(--color-primary)' : 'transparent',
+                    color: currentLang === lang.code ? 'var(--color-text-inverse)' : 'var(--color-text-secondary)'
+                  }}
+                  aria-label={`Switch to ${lang.label}`}
+                  aria-pressed={currentLang === lang.code}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </nav>

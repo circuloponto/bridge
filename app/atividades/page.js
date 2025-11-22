@@ -28,31 +28,30 @@ export default function AtividadesPage() {
             <div className="grid">
               {t.activities.items.map((item, index) => (
                 <ScrollReveal key={index} delay={index * 0.08}>
-                  <div 
-                  key={index} 
-                  className="card"
-                  style={{
-                    position: 'relative',
-                    borderLeft: '4px solid var(--color-secondary)',
-                    background: 'linear-gradient(135deg, rgba(217, 119, 87, 0.05) 0%, rgba(255, 255, 255, 1) 50%)'
-                  }}
-                >
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--space-3)',
-                    marginBottom: 'var(--space-3)'
-                  }}>
+                  <div
+                    key={index}
+                    className="card"
+                    style={{
+                      position: 'relative',
+                      borderLeft: '4px solid var(--color-secondary)'
+                    }}
+                  >
                     <div style={{
-                      width: '12px',
-                      height: '12px',
-                      borderRadius: '50%',
-                      background: 'var(--color-secondary)',
-                      flexShrink: 0
-                    }}></div>
-                    <h3 style={{ margin: 0 }}>{item.title}</h3>
-                  </div>
-                  <p style={{ marginLeft: 'calc(12px + var(--space-3))' }}>{item.description}</p>
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--space-3)',
+                      marginBottom: 'var(--space-3)'
+                    }}>
+                      <div style={{
+                        width: '12px',
+                        height: '12px',
+                        borderRadius: '50%',
+                        background: 'var(--color-secondary)',
+                        flexShrink: 0
+                      }}></div>
+                      <h3 style={{ margin: 0 }}>{item.title}</h3>
+                    </div>
+                    <p style={{ marginLeft: 'calc(12px + var(--space-3))' }}>{item.description}</p>
                   </div>
                 </ScrollReveal>
               ))}

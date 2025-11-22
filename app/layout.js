@@ -2,6 +2,8 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
 
+import { Providers } from "./providers";
+
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
   subsets: ["latin"],
@@ -21,12 +23,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
-        <ClientWrapper />
-        {children}
+        <Providers>
+          <ClientWrapper />
+          {children}
+        </Providers>
       </body>
     </html>
   );

@@ -25,7 +25,7 @@ export default function Home() {
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          background: '#ffffff',
+          background: 'var(--color-bg)',
           position: 'relative'
         }}>
           <div className="max-w-7xl">
@@ -56,7 +56,7 @@ export default function Home() {
                   }}></div>
                   Caregiver Support Project
                 </div>
-                
+
                 {/* Hero Title - MASSIVE & BOLD */}
                 <h1 style={{
                   fontSize: 'clamp(48px, 8vw, 96px)',
@@ -69,7 +69,7 @@ export default function Home() {
                 }}>
                   {t.hero.title}
                 </h1>
-                
+
                 {/* Description - Large & Readable */}
                 <p style={{
                   fontSize: 'clamp(18px, 2vw, 24px)',
@@ -81,7 +81,7 @@ export default function Home() {
                 }}>
                   {t.hero.description}
                 </p>
-                
+
                 {/* CTAs - Prominent & Clear */}
                 <div style={{
                   display: 'flex',
@@ -89,48 +89,48 @@ export default function Home() {
                   justifyContent: 'center',
                   flexWrap: 'wrap'
                 }}>
-                <a
-                  href="/objetivos"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: 'clamp(14px, 3vw, 20px) clamp(24px, 5vw, 40px)',
-                    fontSize: 'clamp(16px, 2vw, 18px)',
-                    fontWeight: '600',
-                    color: '#ffffff',
-                    background: 'var(--color-primary)',
-                    borderRadius: '16px',
-                    textDecoration: 'none',
-                    transition: 'all 0.25s',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  {t.hero.cta}
-                  <ArrowRight size={20} />
-                </a>
-                <a
-                  href="/contactos"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: 'clamp(14px, 3vw, 20px) clamp(24px, 5vw, 40px)',
-                    fontSize: 'clamp(16px, 2vw, 18px)',
-                    fontWeight: '600',
-                    color: 'var(--color-primary)',
-                    background: '#ffffff',
-                    border: '2px solid var(--color-border)',
-                    borderRadius: '16px',
-                    textDecoration: 'none',
-                    transition: 'all 0.25s',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  {t.hero.ctaSecondary}
-                </a>
+                  <a
+                    href="/objetivos"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      padding: 'clamp(14px, 3vw, 20px) clamp(24px, 5vw, 40px)',
+                      fontSize: 'clamp(16px, 2vw, 18px)',
+                      fontWeight: '600',
+                      color: 'var(--color-text-inverse)',
+                      background: 'var(--color-primary)',
+                      borderRadius: '16px',
+                      textDecoration: 'none',
+                      transition: 'all 0.25s',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {t.hero.cta}
+                    <ArrowRight size={20} />
+                  </a>
+                  <a
+                    href="/contactos"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      padding: 'clamp(14px, 3vw, 20px) clamp(24px, 5vw, 40px)',
+                      fontSize: 'clamp(16px, 2vw, 18px)',
+                      fontWeight: '600',
+                      color: 'var(--color-primary)',
+                      background: 'var(--color-bg)',
+                      border: '2px solid var(--color-border)',
+                      borderRadius: '16px',
+                      textDecoration: 'none',
+                      transition: 'all 0.25s',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {t.hero.ctaSecondary}
+                  </a>
+                </div>
               </div>
-            </div>
             </ScrollReveal>
           </div>
         </section>
@@ -163,7 +163,7 @@ export default function Home() {
                 </p>
               </div>
             </ScrollReveal>
-            
+
             <div className="grid" style={{
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: 'var(--space-8)'

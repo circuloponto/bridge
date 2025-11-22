@@ -7,13 +7,13 @@ export default function NewsModal({ article, onClose, t }) {
   useEffect(() => {
     // Disable body scroll when modal is open
     document.body.style.overflow = 'hidden';
-    
+
     // Handle ESC key
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleEsc);
-    
+
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleEsc);
@@ -42,7 +42,7 @@ export default function NewsModal({ article, onClose, t }) {
     >
       <div
         style={{
-          background: '#ffffff',
+          background: 'var(--color-bg)',
           borderRadius: 'var(--radius-2xl)',
           maxWidth: '800px',
           width: '100%',
@@ -114,7 +114,7 @@ export default function NewsModal({ article, onClose, t }) {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'var(--color-primary)';
-              e.currentTarget.style.color = '#ffffff';
+              e.currentTarget.style.color = 'var(--color-bg)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = 'var(--color-cream)';
@@ -133,8 +133,8 @@ export default function NewsModal({ article, onClose, t }) {
           flex: 1
         }}>
           {/* Featured Image */}
-          <img 
-            src="/photo background.jpg" 
+          <img
+            src="/photo background.jpg"
             alt={article.title}
             style={{
               width: '100%',
@@ -155,7 +155,7 @@ export default function NewsModal({ article, onClose, t }) {
             <p style={{ marginBottom: 'var(--space-4)' }}>
               {article.excerpt}
             </p>
-            
+
             <p style={{ marginBottom: 'var(--space-4)' }}>
               {article.fullContent || article.excerpt}
             </p>

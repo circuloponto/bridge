@@ -15,7 +15,7 @@ export default function PrivacidadePage() {
     {
       icon: Shield,
       title: language === 'pt' ? 'Proteção de Dados' : 'Data Protection',
-      content: language === 'pt' 
+      content: language === 'pt'
         ? 'O projeto BRIDGE está comprometido com a proteção da sua privacidade e dos seus dados pessoais. Esta política explica como tratamos as suas informações.'
         : 'The BRIDGE project is committed to protecting your privacy and personal data. This policy explains how we handle your information.'
     },
@@ -53,11 +53,11 @@ export default function PrivacidadePage() {
     <>
       <ParallaxBackground />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
-      
+
       <main style={{ paddingTop: '80px' }}>
         <section style={{
           padding: 'var(--space-20) 0',
-          background: '#ffffff'
+          background: 'var(--color-bg)'
         }}>
           <div className="max-w-7xl">
             <div style={{
@@ -82,7 +82,7 @@ export default function PrivacidadePage() {
                 color: 'var(--color-text-light)',
                 lineHeight: '1.8'
               }}>
-                {language === 'pt' 
+                {language === 'pt'
                   ? 'Transparência e proteção dos seus dados pessoais'
                   : 'Transparency and protection of your personal data'}
               </p>

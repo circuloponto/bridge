@@ -18,11 +18,11 @@ export default function ObjetivosPage() {
     <>
       <ParallaxBackground />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
-      
+
       <main style={{ paddingTop: '80px' }}>
         <section style={{
           padding: 'var(--space-20) 0',
-          background: '#ffffff'
+          background: 'var(--color-bg)'
         }}>
           <div className="max-w-7xl">
             <ScrollReveal>
@@ -64,20 +64,20 @@ export default function ObjetivosPage() {
                 return (
                   <ScrollReveal key={index} delay={index * 0.1}>
                     <div className="card">
-                    <div style={{
-                      width: '56px',
-                      height: '56px',
-                      background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
-                      borderRadius: 'var(--radius-xl)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 'var(--space-5)'
-                    }}>
-                      <Icon size={28} color="#ffffff" strokeWidth={2} />
-                    </div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                      <div style={{
+                        width: '56px',
+                        height: '56px',
+                        background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
+                        borderRadius: 'var(--radius-xl)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: 'var(--space-5)'
+                      }}>
+                        <Icon size={28} color="var(--color-text-inverse)" strokeWidth={2} />
+                      </div>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
                     </div>
                   </ScrollReveal>
                 );

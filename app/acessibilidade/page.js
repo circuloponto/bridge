@@ -16,11 +16,11 @@ export default function AccessibilityPage() {
     <>
       <ParallaxBackground />
       <Navigation t={t} currentLang={language} onLanguageChange={setLanguage} />
-      
+
       <main style={{ paddingTop: '80px' }}>
         <section style={{
           padding: 'var(--space-20) 0',
-          background: '#ffffff'
+          background: 'var(--color-bg)'
         }}>
           <div className="max-w-7xl">
             <div style={{
@@ -240,14 +240,14 @@ export default function AccessibilityPage() {
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <MessageCircle size={24} style={{ color: '#ffffff' }} />
+                    <MessageCircle size={24} style={{ color: 'var(--color-text-inverse)' }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
                       fontSize: 'var(--text-xl)',
                       fontWeight: '600',
                       marginBottom: 'var(--space-3)',
-                      color: '#ffffff'
+                      color: 'var(--color-text-inverse)'
                     }}>
                       {t.accessibility.feedback}
                     </h3>
@@ -336,7 +336,7 @@ export default function AccessibilityPage() {
                       color: 'var(--color-text-light)',
                       marginLeft: 'var(--space-4)'
                     }}>
-                      {language === 'pt' 
+                      {language === 'pt'
                         ? 'Mínimo 4.5:1 para texto normal, 3:1 para texto grande'
                         : 'Minimum 4.5:1 for normal text, 3:1 for large text'}
                     </dd>
@@ -355,7 +355,7 @@ export default function AccessibilityPage() {
                       color: 'var(--color-text-light)',
                       marginLeft: 'var(--space-4)'
                     }}>
-                      {language === 'pt' 
+                      {language === 'pt'
                         ? 'Compatível com NVDA, JAWS, VoiceOver'
                         : 'Compatible with NVDA, JAWS, VoiceOver'}
                     </dd>
