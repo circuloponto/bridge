@@ -112,16 +112,63 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-7xl" style={{
+        <style jsx>{`
+        .nav-container {
+          height: 80px;
+        }
+        .logo-img {
+          height: 70px;
+          width: auto;
+          transition: transform 0.3s;
+        }
+        .logo-text {
+          font-size: 28px;
+          font-weight: 700;
+          color: var(--color-primary);
+          letter-spacing: -0.5px;
+        }
+        .lang-btn {
+          padding: 8px 16px;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.25s;
+        }
+        
+        @media (max-width: 640px) {
+          .nav-container {
+            height: 60px !important;
+          }
+          .logo-link {
+            height: 60px !important;
+          }
+          .logo-img {
+            height: 40px !important;
+          }
+          .logo-text {
+            font-size: 20px !important;
+          }
+          .lang-switcher {
+            padding: 4px !important;
+          }
+          .lang-btn {
+            padding: 6px 10px !important;
+            font-size: 12px !important;
+          }
+        }
+      `}</style>
+        <div className="max-w-7xl nav-container" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '80px',
           position: 'relative'
         }}>
           {/* Logo */}
           <Link
             href="/"
+            className="logo-link"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -135,20 +182,11 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
             <img
               src="/logo.svg"
               alt="BRIDGE Logo"
-              style={{
-                height: '70px',
-                width: 'auto',
-                transition: 'transform 0.3s'
-              }}
+              className="logo-img"
               onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
             />
-            <span style={{
-              fontSize: '28px',
-              fontWeight: '700',
-              color: 'var(--color-primary)',
-              letterSpacing: '-0.5px'
-            }}>
+            <span className="logo-text">
               BRIDGE
             </span>
           </Link>
@@ -243,7 +281,7 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
           </button>
 
           {/* Language Switcher */}
-          <div style={{
+          <div className="lang-switcher" style={{
             display: 'flex',
             gap: '4px',
             background: 'var(--color-cream)',
@@ -255,14 +293,8 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
               <button
                 key={lang.code}
                 onClick={() => onLanguageChange(lang.code)}
+                className="lang-btn"
                 style={{
-                  padding: '8px 16px',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.25s',
                   background: currentLang === lang.code ? 'var(--color-primary)' : 'transparent',
                   color: currentLang === lang.code ? '#ffffff' : 'var(--color-text-secondary)'
                 }}
