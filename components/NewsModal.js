@@ -1,22 +1,41 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 
 export default function NewsModal({ article, onClose, t }) {
+  const modalRef = useRef(null);
+  const closeBtnRef = useRef(null);
+
   useEffect(() => {
     // Disable body scroll when modal is open
     document.body.style.overflow = 'hidden';
 
-    // Handle ESC key
-    const handleEsc = (e) => {
+    // Focus close button when modal opens
+    closeBtnRef.current?.focus();
+
+    // Handle ESC key and focus trap
+    const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
+      // Focus trap
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
-    window.addEventListener('keydown', handleEsc);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleEsc);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 
@@ -24,6 +43,10 @@ export default function NewsModal({ article, onClose, t }) {
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      ref={modalRef}
       style={{
         position: 'fixed',
         top: 0,
@@ -87,7 +110,7 @@ export default function NewsModal({ article, onClose, t }) {
                 {article.date}
               </span>
             </div>
-            <h2 style={{
+            <h2 id="modal-title" style={{
               fontSize: 'var(--text-lg)',
               fontWeight: '600',
               color: 'var(--color-primary)',
@@ -97,6 +120,7 @@ export default function NewsModal({ article, onClose, t }) {
             </h2>
           </div>
           <button
+            ref={closeBtnRef}
             onClick={onClose}
             style={{
               width: '36px',

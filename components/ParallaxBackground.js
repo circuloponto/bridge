@@ -27,7 +27,7 @@ function ParallaxBackground() {
     };
   }, []);
 
-  const colors = ['#7d4e5c', '#d97757', '#e8a05d', '#faf7f5'];
+  const colors = ['#1565C0', '#1A3D72', '#B0B8C4', '#F4F6F8'];
   
   const squares = [
     { id: 1, x: 10, y: 15, size: 150, speed: 1.5, mouseSpeed: 0.8, color: colors[0] },
@@ -44,6 +44,7 @@ function ParallaxBackground() {
 
   return (
     <div
+      aria-hidden="true"
       style={{
         position: 'fixed',
         top: 0,

@@ -27,7 +27,7 @@ export default function CursorFollower() {
         height: '20px',
         borderRadius: '50%',
         background: 'transparent',
-        border: '2px solid #e8a05d',
+        border: '2px solid #1565C0',
         pointerEvents: 'none',
         zIndex: 9999,
         transform: 'translate(-50%, -50%)',

@@ -67,9 +67,10 @@ export default function NoticiasPage() {
                   <p style={{ marginBottom: 'var(--space-4)' }}>{item.excerpt}</p>
                   <button
                     onClick={() => setSelectedArticle(item)}
-                    style={{ 
-                      color: 'var(--color-primary)', 
-                      fontWeight: '600', 
+                    aria-label={`${t.news.readMore}: ${item.title}`}
+                    style={{
+                      color: 'var(--color-primary)',
+                      fontWeight: '600',
                       textDecoration: 'none',
                       background: 'none',
                       border: 'none',
@@ -81,7 +82,7 @@ export default function NoticiasPage() {
                       gap: '4px'
                     }}
                   >
-                    {t.news.readMore} →
+                    {t.news.readMore} <span aria-hidden="true">→</span>
                   </button>
                   </div>
                 </ScrollReveal>

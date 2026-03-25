@@ -47,28 +47,28 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e8a05d;
+  background: #1565C0;
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d97757;
+  background: #1A3D72;
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #e8a05d #f1f1f1;
+  scrollbar-color: #1565C0 #f1f1f1;
 }
 
 :root {
   /* Premium Color System */
-  --color-primary: #7d4e5c;
-  --color-primary-light: #9d6e7c;
-  --color-primary-dark: #5d3e4c;
-  --color-secondary: #d97757;
-  --color-accent: #e8a05d;
-  --color-cream: #faf7f5;
+  --color-primary: #1565C0;
+  --color-primary-light: #3A80D2;
+  --color-primary-dark: #1A3D72;
+  --color-secondary: #1A3D72;
+  --color-accent: #B0B8C4;
+  --color-cream: #F4F6F8;
 
   /* Neutral Palette */
   --color-text: #0a0a0a;
@@ -79,7 +79,7 @@ h6 {
   --color-border: #e5e5e5;
   --color-border-light: #f0f0f0;
   --color-text-inverse: #ffffff;
-  --color-footer-bg: #7d4e5c;
+  --color-footer-bg: #1A3D72;
 
   /* Spacing Scale (8px base) */
   --space-1: 0.5rem;
@@ -157,12 +157,12 @@ h6 {
 
 html.dark {
   /* Premium Dark Mode Colors */
-  --color-primary: #9d6e7c;
+  --color-primary: #5B9BD5;
   /* Lighter for better contrast on dark */
-  --color-primary-light: #b58a96;
-  --color-primary-dark: #7d4e5c;
-  --color-secondary: #e8a05d;
-  --color-accent: #d97757;
+  --color-primary-light: #7BB3E0;
+  --color-primary-dark: #1565C0;
+  --color-secondary: #5B9BD5;
+  --color-accent: #8A9AAE;
   --color-cream: #1a1a1a;
   /* Dark background for cards/sections */
 
@@ -219,8 +219,8 @@ button {
 
 /* Selection color */
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-text);
+  background: var(--color-primary);
+  color: #ffffff;
 }
 
 /* Reduced motion for accessibility */

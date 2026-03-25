@@ -42,26 +42,19 @@ export default function Footer({ t }) {
                 marginBottom: 'var(--space-4)'
               }}>
                 <img
-                  src="/logo-white.svg"
+                  src="/bridge.png"
                   alt="BRIDGE Logo"
                   style={{
                     height: '70px',
-                    width: 'auto'
+                    width: 'auto',
+                    filter: 'brightness(0) invert(1)'
                   }}
                 />
-                <span style={{
-                  fontSize: '28px',
-                  fontWeight: '700',
-                  color: 'var(--color-text-inverse)',
-                  letterSpacing: '-0.5px'
-                }}>
-                  BRIDGE
-                </span>
               </Link>
               <p style={{
                 fontSize: 'var(--text-sm)',
                 lineHeight: '1.6',
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: 'rgba(255, 255, 255, 0.85)',
                 maxWidth: '300px'
               }}>
                 {t.footer.description}
@@ -91,7 +84,7 @@ export default function Footer({ t }) {
                           alignItems: 'center',
                           gap: '6px',
                           fontSize: 'var(--text-sm)',
-                          color: 'rgba(255, 255, 255, 0.7)',
+                          color: 'rgba(255, 255, 255, 0.85)',
                           textDecoration: 'none',
                           transition: 'all 0.3s ease'
                         }}
@@ -100,11 +93,11 @@ export default function Footer({ t }) {
                           e.currentTarget.style.transform = 'translateX(4px)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
+                          e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
                           e.currentTarget.style.transform = 'translateX(0)';
                         }}
                       >
-                        <ChevronRight size={14} style={{ color: '#e8a05d' }} />
+                        <ChevronRight size={14} style={{ color: '#5B9BD5' }} />
                         {link.label}
                       </Link>
                     </li>
@@ -112,7 +105,7 @@ export default function Footer({ t }) {
                 </ul>
               </div>
               <div>
-                <h3 style={{
+                <h3 aria-hidden="true" style={{
                   fontSize: 'var(--text-base)',
                   fontWeight: '600',
                   marginBottom: 'var(--space-4)',
@@ -129,7 +122,7 @@ export default function Footer({ t }) {
                           alignItems: 'center',
                           gap: '6px',
                           fontSize: 'var(--text-sm)',
-                          color: 'rgba(255, 255, 255, 0.7)',
+                          color: 'rgba(255, 255, 255, 0.85)',
                           textDecoration: 'none',
                           transition: 'all 0.3s ease'
                         }}
@@ -138,11 +131,11 @@ export default function Footer({ t }) {
                           e.currentTarget.style.transform = 'translateX(4px)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
+                          e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
                           e.currentTarget.style.transform = 'translateX(0)';
                         }}
                       >
-                        <ChevronRight size={14} style={{ color: '#e8a05d' }} />
+                        <ChevronRight size={14} style={{ color: '#5B9BD5' }} />
                         {link.label}
                       </Link>
                     </li>
@@ -163,30 +156,30 @@ export default function Footer({ t }) {
                 <li>
                   <a href="mailto:info@bridge-project.eu" style={{
                     fontSize: 'var(--text-sm)',
-                    color: 'rgba(255, 255, 255, 0.7)',
+                    color: 'rgba(255, 255, 255, 0.85)',
                     textDecoration: 'none',
                     transition: 'color 0.2s'
                   }}
                     onMouseEnter={(e) => e.target.style.color = 'var(--color-text-inverse)'}
-                    onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
+                    onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.85)'}>
                     info@bridge-project.eu
                   </a>
                 </li>
                 <li>
                   <a href="tel:+351210000000" style={{
                     fontSize: 'var(--text-sm)',
-                    color: 'rgba(255, 255, 255, 0.7)',
+                    color: 'rgba(255, 255, 255, 0.85)',
                     textDecoration: 'none',
                     transition: 'color 0.2s'
                   }}
                     onMouseEnter={(e) => e.target.style.color = 'var(--color-text-inverse)'}
-                    onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
+                    onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.85)'}>
                     +351 210 000 000
                   </a>
                 </li>
                 <li style={{
                   fontSize: 'var(--text-sm)',
-                  color: 'rgba(255, 255, 255, 0.7)'
+                  color: 'rgba(255, 255, 255, 0.85)'
                 }}>
                   Lisboa, Portugal
                 </li>
@@ -211,27 +204,27 @@ export default function Footer({ t }) {
             }}>
               <p style={{
                 fontSize: 'var(--text-sm)',
-                color: 'rgba(255, 255, 255, 0.5)'
+                color: 'rgba(255, 255, 255, 0.7)'
               }}>
                 © {new Date().getFullYear()} BRIDGE. {t.footer.rights}
               </p>
               <div style={{ display: 'flex', gap: 'var(--space-6)', fontSize: 'var(--text-sm)' }}>
                 <Link href="/privacidade" style={{
-                  color: 'rgba(255, 255, 255, 0.5)',
+                  color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
                   transition: 'color 0.2s'
                 }}
                   onMouseEnter={(e) => e.target.style.color = 'var(--color-text-inverse)'}
-                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.5)'}>
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
                   {t.footer.privacy}
                 </Link>
                 <Link href="/acessibilidade" style={{
-                  color: 'rgba(255, 255, 255, 0.5)',
+                  color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
                   transition: 'color 0.2s'
                 }}
                   onMouseEnter={(e) => e.target.style.color = 'var(--color-text-inverse)'}
-                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.5)'}>
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
                   {t.footer.terms}
                 </Link>
               </div>

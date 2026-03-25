@@ -79,61 +79,6 @@ export default function ContactosPage() {
               </div>
             </div>
 
-            <div className="card" style={{ maxWidth: '700px', margin: '0 auto' }}>
-              <h2 style={{ marginBottom: 'var(--space-6)' }}>Send us a message</h2>
-              <form style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                <input
-                  type="text"
-                  placeholder={t.contacts.form.name}
-                  style={{
-                    padding: 'var(--space-3)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: 'var(--radius-lg)',
-                    fontSize: 'var(--text-base)'
-                  }}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder={t.contacts.form.email}
-                  style={{
-                    padding: 'var(--space-3)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: 'var(--radius-lg)',
-                    fontSize: 'var(--text-base)'
-                  }}
-                  required
-                />
-                <textarea
-                  placeholder={t.contacts.form.message}
-                  rows="6"
-                  style={{
-                    padding: 'var(--space-3)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: 'var(--radius-lg)',
-                    fontSize: 'var(--text-base)',
-                    resize: 'vertical'
-                  }}
-                  required
-                ></textarea>
-                <button
-                  type="submit"
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    background: 'var(--color-primary)',
-                    color: 'var(--color-text-inverse)',
-                    border: 'none',
-                    borderRadius: 'var(--radius-xl)',
-                    fontSize: 'var(--text-lg)',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    transition: 'var(--transition-base)'
-                  }}
-                >
-                  {t.contacts.form.send}
-                </button>
-              </form>
-            </div>
           </div>
         </section>
       </main>

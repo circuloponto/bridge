@@ -97,10 +97,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt" suppressHydrationWarning>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
+        <a href="#main-content" className="skip-to-main">
+          Skip to main content
+        </a>
         <StructuredData />
         <Providers>
           <ClientWrapper />

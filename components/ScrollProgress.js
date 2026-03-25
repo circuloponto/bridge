@@ -39,7 +39,7 @@ export default function ScrollProgress() {
           right: '50%',
           height: '100%',
           width: `${scrollProgress / 2}%`,
-          background: '#e8a05d',
+          background: '#1565C0',
           transition: 'width 0.1s ease-out',
           transformOrigin: 'right'
         }}
@@ -52,7 +52,7 @@ export default function ScrollProgress() {
           left: '50%',
           height: '100%',
           width: `${scrollProgress / 2}%`,
-          background: '#e8a05d',
+          background: '#1565C0',
           transition: 'width 0.1s ease-out',
           transformOrigin: 'left'
         }}

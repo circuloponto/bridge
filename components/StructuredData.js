@@ -7,7 +7,7 @@ export default function StructuredData() {
         "name": "BRIDGE Project",
         "alternateName": "Building Resilience in Digital Gender Equality",
         "url": "https://bridge-project.eu",
-        "logo": "https://bridge-project.eu/logo.svg",
+        "logo": "https://bridge-project.eu/bridge.png",
         "description": "O projeto BRIDGE oferece suporte legal, financeiro e logístico para cuidadores informais em Portugal.",
         "email": "info@bridge-project.eu",
         "telephone": "+351210000000",

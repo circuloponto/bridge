@@ -16,6 +16,8 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
   const navRef = useRef(null);
   const linkRefs = useRef({});
   const previousPath = useRef(pathname);
+  const mobileMenuRef = useRef(null);
+  const menuBtnRef = useRef(null);
 
   // Avoid hydration mismatch
   useEffect(() => {
@@ -30,10 +32,40 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Disable body scroll when mobile menu is open
+  // Disable body scroll when mobile menu is open + keyboard accessibility
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+
+      // Handle Escape key to close menu
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setIsOpen(false);
+          menuBtnRef.current?.focus();
+        }
+        // Focus trap within mobile menu
+        if (e.key === 'Tab' && mobileMenuRef.current) {
+          const focusable = mobileMenuRef.current.querySelectorAll('a, button');
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
+      // Focus first menu link when opened
+      setTimeout(() => {
+        const firstLink = mobileMenuRef.current?.querySelector('a');
+        firstLink?.focus();
+      }, 100);
+
+      return () => window.removeEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -189,15 +221,12 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
             aria-label="BRIDGE Home"
           >
             <img
-              src="/logo.svg"
+              src="/bridge.png"
               alt="BRIDGE Logo"
               className="logo-img"
               onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
             />
-            <span className="logo-text">
-              BRIDGE
-            </span>
           </Link>
 
           {/* Desktop Navigation - Hidden on mobile */}
@@ -268,6 +297,7 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuBtnRef}
             onClick={() => setIsOpen(!isOpen)}
             style={{
               display: 'none',
@@ -278,7 +308,8 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
               color: 'var(--color-text)'
             }}
             className="mobile-menu-btn"
-            aria-label="Toggle menu"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
           >
             <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
@@ -349,25 +380,29 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div style={{
-          position: 'fixed',
-          top: '80px',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'var(--color-bg)',
-          backgroundImage: `
-            linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-          padding: 'var(--space-4) 0',
-          zIndex: 1001,
-          overflowY: 'auto'
-        }}>
+        <div
+          ref={mobileMenuRef}
+          role="menu"
+          aria-label="Mobile navigation"
+          style={{
+            position: 'fixed',
+            top: '80px',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'var(--color-bg)',
+            backgroundImage: `
+              linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+            padding: 'var(--space-4) 0',
+            zIndex: 1001,
+            overflowY: 'auto'
+          }}>
           <style jsx>{`
             @keyframes slideInFromLeft {
               from {
@@ -385,16 +420,20 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
               100% { opacity: 1; transform: scale(1); }
             }
           `}</style>
-          <div className="max-w-7xl">
+          <ul className="max-w-7xl" style={{ listStyle: 'none' }}>
             {navItems.map((item, index) => {
               const isActive = pathname === item.href;
               return (
-                <div key={item.href} style={{
+                <li key={item.href} role="menuitem" style={{
                   animation: `slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s both`
                 }}>
                   <Link
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      menuBtnRef.current?.focus();
+                    }}
+                    aria-current={isActive ? 'page' : undefined}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -419,7 +458,7 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
                     }}
                   >
                     {isActive && (
-                      <span style={{
+                      <span aria-hidden="true" style={{
                         display: 'inline-block',
                         width: '8px',
                         height: '8px',
@@ -431,10 +470,10 @@ export default function Navigation({ t, currentLang, onLanguageChange }) {
                     )}
                     {item.label}
                   </Link>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       )}
     </>
